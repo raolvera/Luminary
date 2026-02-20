@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 64f5ea2 (update cms)
 let cmsData = {
     seasons: {
         spring: { name: "Spring", tagline: "Celebrating renewal", colors: { primary: "#6b9080", accent: "#f4a259" }, menu: [] },
@@ -12,15 +15,23 @@ let cmsData = {
 
 async function loadCMSData() {
     try {
+<<<<<<< HEAD
         const [menu, chef, philosophy, hero] = await Promise.all([
             fetch('/content/menu.json').then(r => r.json()).catch(() => null),
             fetch('/content/chef.json').then(r => r.json()).catch(() => null),
             fetch('/content/philosophy.json').then(r => r.json()).catch(() => null),
             fetch('/content/hero.json').then(r => r.json()).catch(() => null)
+=======
+        const [menu, chef, philosophy] = await Promise.all([
+            fetch('/content/menu.json').then(r => r.json()).catch(() => null),
+            fetch('/content/chef.json').then(r => r.json()).catch(() => null),
+            fetch('/content/philosophy.json').then(r => r.json()).catch(() => null)
+>>>>>>> 64f5ea2 (update cms)
         ]);
 
         if (menu?.items) {
             menu.items.forEach(item => {
+<<<<<<< HEAD
                 // Initialize everything when page loads
                 document.addEventListener('DOMContentLoaded', async () => {
                     if (window.cmsDataReady) {
@@ -46,7 +57,7 @@ async function loadCMSData() {
                     const taglineEl = document.getElementById('seasonalTagline');
                     if (taglineEl) taglineEl.textContent = seasonData.tagline;
 
-                    // Update menu season indicator
+                    let cmsData = {
                     const menuInd = document.getElementById('menuSeasonIndicator');
                     if (menuInd) menuInd.textContent = 'Full Seasonal Menu';
                 }
@@ -59,70 +70,70 @@ async function loadCMSData() {
                     const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
                     menuGrid.innerHTML = allSeasons.map(s => {
                         const data = cmsData.seasons[s];
-                        if (!data || !data.menu || !data.menu.length) return '';
-                        return `
-                            <div class="menu-season-group">
-                                <h3 class="menu-season-title">${data.name}</h3>
-                                <div class="menu-season-items">
-                                    ${data.menu.map(item => `
-                                        <div class="menu-item${item.image ? ' has-image' : ''}">
-                                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/ac2xx7.jpg';"></div>` : ''}
-                                            <div class="menu-item-body">
-                                                <div class="menu-item-header">
-                                                    <h3>${item.name}</h3>
-                                                    ${item.price ? `<span class="menu-item-price">${item.price}</span>` : ''}
-                                                </div>
-                                                <div class="ingredients">${item.ingredients || ''}</div>
-                                                <p>${item.description || ''}</p>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>`;
-                    }).join('');
+                            const [menu, chef, philosophy, hero] = await Promise.all([
+                                fetch('/content/menu.json').then(r => r.json()).catch(() => null),
+                                fetch('/content/chef.json').then(r => r.json()).catch(() => null),
+                                fetch('/content/philosophy.json').then(r => r.json()).catch(() => null),
+                                fetch('/content/hero.json').then(r => r.json()).catch(() => null)
+                            ]);
 
-                    // Load chef info
-                    const chefNameEl = document.getElementById('chefName');
-                    if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
-                    const chefBioEl = document.getElementById('chefBio');
-                    if (chefBioEl) chefBioEl.innerHTML = (cmsData.chef.bio || []).map(p => `<p>${p}</p>`).join('');
+                            if (menu?.items) {
+                                menu.items.forEach(item => {
+                                    if (cmsData.seasons[item.season]) {
+                                        cmsData.seasons[item.season].menu.push({
+                                            name: item.name,
+                                            ingredients: item.category || '',
+                                            description: item.description || '',
+                                            image: item.image || '',
+                                            price: item.price || ''
+                                        });
+                                    }
+                                });
+                            }
 
-                    // Load philosophy text
-                    const philEl = document.getElementById('philosophyPreview');
-                    if (philEl) philEl.textContent = cmsData.philosophy || '';
-                }
+                            if (chef) {
+                                cmsData.chef.name = chef.name || cmsData.chef.name;
+                                cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n').map(p => p.trim()).filter(p => p) : [];
+                                if (chef.image) {
+                                    const chefImg = document.getElementById('chefImage');
+                                    if (chefImg) {
+                                        const img = chefImg.querySelector('img') || document.createElement('img');
+                                        img.src = chef.image || '/img/chef.jpg';
+                                        img.alt = chef.name || 'Chef';
+                                        img.loading = 'lazy';
+                                        img.onerror = () => { img.onerror = null; img.src = '/img/chef.jpg'; };
+                                        if (!img.parentElement) chefImg.appendChild(img);
+                                    }
+                                }
+                            }
 
-                // Handle reservation form submission
-                function initReservationSystem() {
-                    // Netlify Forms handles submission automatically
-                }
+                            if (philosophy?.text) cmsData.philosophy = philosophy.text;
 
-                // Don't let people book in the past
-                function setMinDate() {
-                    const dateInput = document.getElementById('date');
-                    if (!dateInput) return;
-                    const today = new Date().toISOString().split('T')[0];
-                    dateInput.setAttribute('min', today);
-                }
+                            if (hero?.image) {
+                                const heroImg = document.getElementById('heroBgImage');
+                                if (heroImg) {
+                                    heroImg.src = hero.image;
+                                    heroImg.alt = 'Luminary restaurant';
+                                    heroImg.onerror = () => { heroImg.onerror = null; heroImg.src = '/img/hero.jpg'; };
+                                    const heroEl = document.querySelector('.hero');
+                                    if (heroEl) heroEl.classList.add('has-hero-image');
+                                }
+                            }
 
-                // Format date nicely for confirmation
-                function formatDate(dateString) {
-                    const date = new Date(dateString);
-                    return date.toLocaleDateString('en-US', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                }
+                        } catch (e) { /* swallow fetch errors */ }
 
-                // Format time nicely
-                function formatTime(timeString) {
-                    const [hours, minutes] = timeString.split(':');
-                    const hour = parseInt(hours, 10);
-                    const ampm = hour >= 12 ? 'PM' : 'AM';
-                    const displayHour = hour % 12 === 0 ? 12 : hour % 12;
-                    return `${displayHour}:${minutes} ${ampm}`;
+                        return cmsData;
+                    }
+
+                    function getCurrentSeason() {
+                        const month = new Date().getMonth();
+                        if (month >= 2 && month <= 4) return 'spring';
+                        if (month >= 5 && month <= 7) return 'summer';
+                        if (month >= 8 && month <= 10) return 'autumn';
+                        return 'winter';
+                    }
+
+                    window.cmsDataReady = loadCMSData();
                 }
 
                 // Mobile menu toggle
@@ -255,3 +266,34 @@ async function loadCMSData() {
                 }
 
                 window.cmsDataReady = loadCMSData();
+=======
+                if (cmsData.seasons[item.season]) {
+                    cmsData.seasons[item.season].menu.push({
+                        name: item.name,
+                        ingredients: item.category,
+                        description: item.description
+                    });
+                }
+            });
+        }
+
+        if (chef) {
+            cmsData.chef.name = chef.name || cmsData.chef.name;
+            cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n') : [];
+            if (chef.image) document.getElementById('chefImage').style.backgroundImage = `url(${chef.image})`;
+        }
+
+        if (philosophy?.text) cmsData.philosophy = philosophy.text;
+    } catch (e) {}
+}
+
+function getCurrentSeason() {
+    const month = new Date().getMonth();
+    if (month >= 2 && month <= 4) return 'spring';
+    if (month >= 5 && month <= 7) return 'summer';
+    if (month >= 8 && month <= 10) return 'autumn';
+    return 'winter';
+}
+
+loadCMSData();
+>>>>>>> 64f5ea2 (update cms)
