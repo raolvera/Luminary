@@ -103,6 +103,7 @@ body {
     letter-spacing: 2px;
     color: var(--primary);
     text-decoration: none;
+    margin-right: auto;
 }
 
 .nav-menu {
@@ -611,6 +612,7 @@ body.winter {
         font-size: 18px;
     }
 }
+
 /* Honeypot spam protection */
 .honeypot {
     display: none;
