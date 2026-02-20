@@ -46,70 +46,8 @@ function loadContent(season) {
 
 // Handle reservation form submission
 function initReservationSystem() {
-    const form = document.getElementById('reservationForm');
-    const confirmation = document.getElementById('confirmationMessage');
-    
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            date: document.getElementById('date').value,
-            time: document.getElementById('time').value,
-            guests: document.getElementById('guests').value,
-            phone: document.getElementById('phone').value,
-            notes: document.getElementById('notes').value,
-            season: getCurrentSeason()
-        };
-        
-        try {
-            // Send to Formspree (replace with your form ID)
-            const response = await fetch('https://formspree.io/f/xwvnnqqk', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            
-            if (response.ok) {
-                // Show confirmation message
-                confirmation.innerHTML = `
-                    <h3>Reservation Confirmed!</h3>
-                    <p>Thank you, ${formData.name}. We've reserved a table for ${formData.guests} guests on ${formatDate(formData.date)} at ${formatTime(formData.time)}.</p>
-                    <p>A confirmation email has been sent to ${formData.email}.</p>
-                `;
-                confirmation.classList.add('show');
-                
-                // Also save to localStorage as backup
-                const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
-                reservations.push({
-                    ...formData,
-                    id: Date.now(),
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('reservations', JSON.stringify(reservations));
-                
-                // Reset form
-                form.reset();
-            } else {
-                throw new Error('Submission failed');
-            }
-        } catch (error) {
-            console.error('Reservation error:', error);
-            confirmation.innerHTML = `
-                <h3 style="color: #721c24;">Submission Error</h3>
-                <p>We couldn't process your reservation. Please call us at (555) 123-4567.</p>
-            `;
-            confirmation.style.background = '#f8d7da';
-            confirmation.classList.add('show');
-        }
-        
-        // Hide confirmation after 10 seconds
-        setTimeout(() => {
-            confirmation.classList.remove('show');
-        }, 10000);
-    });
+    // Netlify Forms handles submission automatically
+    // No JavaScript needed - form submits naturally
 }
 
 // Don't let people book in the past
@@ -134,7 +72,7 @@ function formatDate(dateString) {
 function formatTime(timeString) {
     const [hours, minutes] = timeString.split(':');
     const hour = parseInt(hours);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const ampm = hour >= 12 ? 'PM' : 'AM'; // cSpell:ignore ampm
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${displayHour}:${minutes} ${ampm}`;
 }
