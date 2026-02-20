@@ -73,7 +73,44 @@ function loadContent(season) {
 // Handle reservation form submission
 // Handle reservation form submission
 function initReservationSystem() {
-    // Netlify Forms handles submission automatically
+    const form = document.getElementById('reservationForm');
+    const confirmation = document.getElementById('confirmationMessage');
+    if (!form) return; // nothing to do on pages without the form
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!confirmation) return;
+
+        const formData = new FormData(form);
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const date = formData.get('date') || '';
+        const time = formData.get('time') || '';
+        const guests = formData.get('guests') || '';
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            });
+
+            if (response.ok) {
+                confirmation.innerHTML = `\n                    <h3>Reservation Confirmed!</h3>\n                    <p>Thank you, ${name}. We've reserved a table for ${guests} guests on ${formatDate(date)} at ${formatTime(time)}.</p>\n                    <p>A confirmation email has been sent to ${email}.</p>\n                `;
+                confirmation.classList.add('show');
+                form.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (err) {
+            console.error('Reservation error:', err);
+            confirmation.innerHTML = `\n                <h3 style="color: #721c24;">Submission Error</h3>\n                <p>We couldn't process your reservation. Please call us at (555) 123-4567.</p>\n            `;
+            confirmation.style.background = '#f8d7da';
+            confirmation.classList.add('show');
+        }
+
+        setTimeout(() => confirmation.classList.remove('show'), 10000);
+    });
 }
 
 // Don't let people book in the past
