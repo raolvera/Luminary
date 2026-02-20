@@ -157,11 +157,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1f2a24;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: background 0.8s ease;
 }
 
 .hero-bg {
@@ -191,7 +192,6 @@ body {
     background: rgba(0, 0, 0, 0.45);
     opacity: 1;
 }
-
 .hero-content {
     position: relative;
     z-index: 1;
@@ -338,6 +338,7 @@ body {
 }
 
 .menu-grid {
+<<<<<<< HEAD
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -364,6 +365,13 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+=======
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+>>>>>>> 0fcbfe3 (Add files via upload)
 }
 
 .menu-item {
@@ -374,6 +382,7 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+<<<<<<< HEAD
 .menu-item.has-image {
     padding: 0;
     overflow: hidden;
@@ -415,6 +424,8 @@ body {
     white-space: nowrap;
 }
 
+=======
+>>>>>>> 0fcbfe3 (Add files via upload)
 .menu-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -700,6 +711,7 @@ body.winter {
         font-size: 18px;
     }
 }
+<<<<<<< HEAD
 
 /* Honeypot spam protection */
 .honeypot {
@@ -711,3 +723,5 @@ body.winter {
     text-align: center;
     padding: 100px 20px;
 }
+=======
+>>>>>>> 0fcbfe3 (Add files via upload)

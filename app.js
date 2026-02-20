@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.cmsDataReady) {
         await window.cmsDataReady;
     }
-
     const currentSeason = getCurrentSeason();
     applySeason(currentSeason);
     loadContent(currentSeason);
@@ -19,21 +18,26 @@ function applySeason(season) {
     const seasonData = cmsData.seasons[season];
 
     // Update hero section
-    document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
-    document.getElementById('seasonalTagline').textContent = seasonData.tagline;
+    const currentSeasonEl = document.getElementById('currentSeason');
+    if (currentSeasonEl) currentSeasonEl.textContent = `${seasonData.name} Menu`;
+    const taglineEl = document.getElementById('seasonalTagline');
+    if (taglineEl) taglineEl.textContent = seasonData.tagline;
 
     // Update menu season indicator
-    document.getElementById('menuSeasonIndicator').textContent = 'Full Seasonal Menu';
+    const menuInd = document.getElementById('menuSeasonIndicator');
+    if (menuInd) menuInd.textContent = 'Full Seasonal Menu';
 }
 
+// Load content from CMS data
 // Load content from CMS data
 function loadContent(season) {
     // Build menu items for all seasons
     const menuGrid = document.getElementById('menuGrid');
+    if (!menuGrid) return;
     const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
     menuGrid.innerHTML = allSeasons.map(s => {
         const data = cmsData.seasons[s];
-        if (!data.menu.length) return '';
+        if (!data || !data.menu || !data.menu.length) return '';
         return `
             <div class="menu-season-group">
                 <h3 class="menu-season-title">${data.name}</h3>
@@ -46,8 +50,8 @@ function loadContent(season) {
                                     <h3>${item.name}</h3>
                                     ${item.price ? `<span class="menu-item-price">${item.price}</span>` : ''}
                                 </div>
-                                <div class="ingredients">${item.ingredients}</div>
-                                <p>${item.description}</p>
+                                <div class="ingredients">${item.ingredients || ''}</div>
+                                <p>${item.description || ''}</p>
                             </div>
                         </div>
                     `).join('')}
@@ -56,17 +60,20 @@ function loadContent(season) {
     }).join('');
 
     // Load chef info
-    document.getElementById('chefName').textContent = cmsData.chef.name;
-    document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
+    const chefNameEl = document.getElementById('chefName');
+    if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
+    const chefBioEl = document.getElementById('chefBio');
+    if (chefBioEl) chefBioEl.innerHTML = (cmsData.chef.bio || []).map(p => `<p>${p}</p>`).join('');
 
     // Load philosophy text
-    document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
+    const philEl = document.getElementById('philosophyPreview');
+    if (philEl) philEl.textContent = cmsData.philosophy || '';
 }
 
 // Handle reservation form submission
+// Handle reservation form submission
 function initReservationSystem() {
     // Netlify Forms handles submission automatically
-    // No JavaScript needed - form submits naturally
 }
 
 // Don't let people book in the past
@@ -79,11 +86,19 @@ function setMinDate() {
 // Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
+<<<<<<< HEAD
     return date.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric'
+=======
+    return date.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+>>>>>>> 0fcbfe3 (Add files via upload)
     });
 }
 
@@ -91,7 +106,11 @@ function formatDate(dateString) {
 function formatTime(timeString) {
     const [hours, minutes] = timeString.split(':');
     const hour = parseInt(hours);
+<<<<<<< HEAD
     const ampm = hour >= 12 ? 'PM' : 'AM'; // cSpell:ignore ampm
+=======
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+>>>>>>> 0fcbfe3 (Add files via upload)
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${displayHour}:${minutes} ${ampm}`;
 }
@@ -100,12 +119,20 @@ function formatTime(timeString) {
 function initHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0fcbfe3 (Add files via upload)
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0fcbfe3 (Add files via upload)
     // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
