@@ -123,31 +123,14 @@ function setMinDate() {
 // Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
-<<<<<<< HEAD
-    return date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-=======
-    return date.toLocaleDateString('en-US', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
->>>>>>> 0fcbfe3 (Add files via upload)
     });
 }
 
 // Format time nicely
 function formatTime(timeString) {
     const [hours, minutes] = timeString.split(':');
-    const hour = parseInt(hours);
-<<<<<<< HEAD
-    const ampm = hour >= 12 ? 'PM' : 'AM'; // cSpell:ignore ampm
-=======
+    const hour = parseInt(hours, 10);
     const ampm = hour >= 12 ? 'PM' : 'AM';
->>>>>>> 0fcbfe3 (Add files via upload)
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${displayHour}:${minutes} ${ampm}`;
 }
