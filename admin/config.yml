@@ -1,1 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - name: "chef"
+        label: "Chef Section"
+        file: "content/chef.json"
+        fields:
+          - {label: "Chef Name", name: "name", widget: "string"}
+          - {label: "Biography", name: "bio", widget: "markdown"}
+          - {label: "Chef Image", name: "image", widget: "image"}
+      
+      - name: "philosophy"
+        label: "Philosophy"
+        file: "content/philosophy.json"
+        fields:
+          - {label: "Philosophy Text", name: "text", widget: "text"}
+      
+      - name: "menu"
+        label: "Seasonal Menu"
+        file: "content/menu.json"
+        fields:
+          - label: "Menu Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Dish Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Season", name: "season", widget: "select", options: ["spring", "summer", "fall", "winter"]}
+              - {label: "Category", name: "category", widget: "string"}
 
