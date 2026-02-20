@@ -70,25 +70,27 @@
     <section id="reserve" class="reservation-section">
         <div class="container">
             <h2>Reserve Your Experience</h2>
-            <form id="reservationForm" class="reservation-form">
+            <form id="reservationForm" class="reservation-form" name="reservations" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="reservations">
+                <p class="honeypot"><label>Don't fill this out: <input name="bot-field"></label></p>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="date">Date</label>
-                        <input type="date" id="date" required>
+                        <input type="date" id="date" name="date" required>
                     </div>
                     <div class="form-group">
                         <label for="time">Time</label>
-                        <select id="time" required>
+                        <select id="time" name="time" required>
                             <option value="">Select time</option>
                             <option value="17:00">5:00 PM</option>
                             <option value="17:30">5:30 PM</option>
@@ -105,7 +107,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="guests">Guests</label>
-                        <select id="guests" required>
+                        <select id="guests" name="guests" required>
                             <option value="">Select guests</option>
                             <option value="1">1 Guest</option>
                             <option value="2">2 Guests</option>
@@ -118,12 +120,12 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="notes">Special Requests</label>
-                    <textarea id="notes" rows="3"></textarea>
+                    <textarea id="notes" name="notes" rows="3"></textarea>
                 </div>
                 <button type="submit" class="cta-button">Confirm Reservation</button>
             </form>
@@ -187,6 +189,10 @@
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="cms-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
     <script src="app.js"></script>
 </body>
 </html>
