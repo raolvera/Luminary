@@ -116,6 +116,7 @@ function initReservationSystem() {
 // Don't let people book in the past
 function setMinDate() {
     const dateInput = document.getElementById('date');
+    if (!dateInput) return;
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
 }
@@ -123,6 +124,11 @@ function setMinDate() {
 // Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
 }
 

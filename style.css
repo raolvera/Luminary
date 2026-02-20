@@ -712,11 +712,15 @@ body.winter {
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3f9a5eb (fix major issue with form spree)
 
 /* Honeypot spam protection */
 .honeypot {
     display: none;
 }
+<<<<<<< HEAD
 
 /* Success page */
 .success-container {
@@ -725,3 +729,5 @@ body.winter {
 }
 =======
 >>>>>>> 0fcbfe3 (Add files via upload)
+=======
+>>>>>>> 3f9a5eb (fix major issue with form spree)
