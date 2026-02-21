@@ -161,5 +161,4 @@ Feel free to fork this project and customize it for your own restaurant or clien
 
 ---
 
-### Built with ❤️ using JAMstack architecture
-###[![Netlify Status](https://api.netlify.com/api/v1/badges/0ecdf48e-7d8f-4847-a64d-ecabd4c3a853/deploy-status)](https://app.netlify.com/projects/zesty-frangollo-434c44/deploys)
+### Built with ❤️ using JAMstack architecture [![Netlify Status](https://api.netlify.com/api/v1/badges/0ecdf48e-7d8f-4847-a64d-ecabd4c3a853/deploy-status)](https://app.netlify.com/projects/zesty-frangollo-434c44/deploys)
