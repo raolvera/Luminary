@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "name": "Spring Pea Velouté",
+      "description": "Silky soup celebrating the first harvest of spring peas, finished with garden mint",
+      "season": "spring",
+      "category": "English peas, mint, crème fraîche"
+    },
+    {
+      "name": "Heirloom Tomato",
+      "description": "Peak-season tomatoes in vibrant colors, paired with creamy burrata and aromatic basil",
+      "season": "summer",
+      "category": "Heirloom tomatoes, burrata, basil oil"
+    },
+    {
+      "name": "Roasted Squash",
+      "description": "Caramelized squash with crispy sage and toasted hazelnuts from local orchards",
+      "season": "autumn",
+      "category": "Kabocha squash, sage, hazelnuts"
+    },
+    {
+      "name": "Celery Root Soup",
+      "description": "Velvety soup of roasted celery root, elevated with black truffle essence",
+      "season": "winter",
+      "category": "Celery root, truffle, chives"
+    }
+  ]
+}
