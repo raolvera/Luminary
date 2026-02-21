@@ -135,8 +135,13 @@ function formatDate(dateString) {
 // Format time nicely
 function formatTime(timeString) {
     const [hours, minutes] = timeString.split(':');
+<<<<<<< HEAD
     const hour = parseInt(hours, 10);
     const ampm = hour >= 12 ? 'PM' : 'AM';
+=======
+    const hour = parseInt(hours);
+    const ampm = hour >= 12 ? 'PM' : 'AM'; // ignore ampm
+>>>>>>> 666038c (Ready to commit changes.)
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${displayHour}:${minutes} ${ampm}`;
 }

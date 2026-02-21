@@ -338,7 +338,9 @@ body {
 }
 
 .menu-grid {
-<<<<<<< HEAD
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -365,7 +367,6 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-=======
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
@@ -721,13 +722,19 @@ body.winter {
     display: none;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 666038c (Ready to commit changes.)
 
 /* Success page */
 .success-container {
     text-align: center;
     padding: 100px 20px;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 0fcbfe3 (Add files via upload)
 =======
 >>>>>>> 3f9a5eb (fix major issue with form spree)
+=======
+>>>>>>> 666038c (Ready to commit changes.)
