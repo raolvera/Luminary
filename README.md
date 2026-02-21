@@ -20,49 +20,16 @@ A seasonal fine dining restaurant website with a built-in content management sys
 - **Authentication:** Netlify Identity
 
 ## 📁 Project Structure
-
-<<<<<<< HEAD
-```text
 Luminary/
--admin/              # CMS admin interface
--content/            # JSON data files (menu, chef, philosophy)
--img/                # Images
--vid/                # Videos
--index.html          # Main website
--form.html           # Form
--style.css           # Styling
--app.js              # Interactivity
-# Luminary 🍽️
-
-A seasonal fine dining restaurant website with a built-in content management system. The menu automatically changes with the seasons, and restaurant owners can update content without touching code.
-
-## ✨ Features
-
-- Automatic Seasonal Theming — Menu and colors change based on the current season (Spring/Summer/Fall/Winter)
-- Content Management System — Owners can edit menu items, chef bio, and philosophy through an admin panel
-- Reservation System — Built-in form handling with email notifications
-- Fully Responsive — Works on mobile, tablet, and desktop
-- Zero Backend — No database or server required
-
-## 🛠️ Tech Stack
-
-- Frontend: HTML5, CSS3, Vanilla JavaScript
-- CMS: Decap CMS (Netlify/Decap-friendly content files)
-- Hosting: Netlify
-- Storage: GitHub
-- Authentication: Netlify Identity
-
-## 📁 Project Structure
-
-Luminary/
-- admin/              # CMS admin interface
-- content/            # JSON data files (menu, chef, philosophy)
-- img/                # Images
-- index.html          # Main website
-- style.css           # Styling
-- app.js              # Interactivity
-- cms-data.js         # Data loader
-- netlify.toml        # Deployment config
+ - admin/              # CMS admin interface
+ - content/            # JSON data files (menu, chef, philosophy)
+ - img/                # Images
+ - index.html          # Main website
+ - style.css           # Styling
+ - app.js              # Interactivity
+ - cms-data.js         # Data loader
+ - netlify.toml        # Deployment config
+ - success.html        # Success page
 
 ## 🚀 How It Works
 
