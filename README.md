@@ -21,7 +21,7 @@ A seasonal fine dining restaurant website with a built-in content management sys
 
 ## 📁 Project Structure
 
-```
+```text
 Luminary/
 -admin/              # CMS admin interface
 -content/            # JSON data files (menu, chef, philosophy)
@@ -47,6 +47,7 @@ Luminary/
 ## 🎨 Seasonal System
 
 The website automatically detects the current season based on the month:
+
 - **Spring:** March - May (Green & Orange theme)
 - **Summer:** June - August (Warm tones)
 - **Fall:** September - November (Brown & Gold theme)
@@ -57,6 +58,7 @@ Menu items are filtered to show only dishes for the current season.
 ## 📝 Content Management
 
 Owners can edit through the CMS:
+
 - ✅ Menu items (name, description, ingredients, season)
 - ✅ Chef biography and photo
 - ✅ Restaurant philosophy text
@@ -65,6 +67,7 @@ Owners can edit through the CMS:
 ## 📮 Reservations
 
 Reservation form captures:
+
 - Name, Email, Phone
 - Date, Time, Number of Guests
 - Special Requests
@@ -74,12 +77,14 @@ Submissions are stored in Netlify dashboard with email notifications.
 ## 🌐 Deployment
 
 ### Prerequisites
+
 - GitHub account
 - Netlify account (free)
 
 ### Setup Steps
 
 1. **Push to GitHub**
+
    ```bash
    git init
    git add .
@@ -100,19 +105,21 @@ Submissions are stored in Netlify dashboard with email notifications.
    - Invite yourself as a user
 
 4. **Access CMS**
-   - Go to `yoursite.netlify.app/admin/`
+   - Go to `your-site-name.netlify.app/admin/`
    - Login with your Netlify Identity credentials
    - Start editing content!
 
 ## 💡 Key Benefits
 
 **For Restaurant Owners:**
+
 - Update menu anytime without a developer
 - No monthly CMS fees
 - Free hosting
 - Professional, fast website
 
 **For Developers:**
+
 - No backend to maintain
 - No database management
 - Version-controlled content
@@ -123,6 +130,7 @@ Submissions are stored in Netlify dashboard with email notifications.
 1. Clone the repository
 2. Open `index.html` in a browser
 3. For CMS testing, use Netlify Dev:
+
    ```bash
    netlify dev
    ```
@@ -153,4 +161,4 @@ Feel free to fork this project and customize it for your own restaurant or clien
 
 ---
 
-**Built with ❤️ using JAMstack architecture**
+### Built with ❤️ using JAMstack architecture
