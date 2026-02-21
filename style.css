@@ -620,3 +620,8 @@ body.winter {
     display: none;
 }
 
+/* Success page */
+.success-container {
+    text-align: center;
+    padding: 100px 20px;
+}
