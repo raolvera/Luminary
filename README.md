@@ -89,7 +89,7 @@ Submissions are stored in Netlify dashboard with email notifications.
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin (https://raolvera.github.io/Luminary/)
+   git remote add origin (https://yourname.github.io/Luminary/)
    git push -u origin main
    ```
 
