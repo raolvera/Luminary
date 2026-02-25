@@ -61,10 +61,9 @@ function loadContent(season) {
 
     // Load chef info
     const chefNameEl = document.getElementById('chefName');
-    if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
     const chefBioEl = document.getElementById('chefBio');
+    if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
     if (chefBioEl) chefBioEl.innerHTML = (cmsData.chef.bio || []).map(p => `<p>${p}</p>`).join('');
-
     // Load philosophy text
     const philEl = document.getElementById('philosophyPreview');
     if (philEl) philEl.textContent = cmsData.philosophy || '';
