@@ -608,7 +608,8 @@ body.autumn {
     --accent: #d4a574;
 }
 
-body.winter {
+body.winter,
+body {
     --primary: #2c5f4f;
     --accent: #a8dadc;
 }
