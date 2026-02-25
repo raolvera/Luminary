@@ -34,13 +34,13 @@ function applySeason(season) {
 // Load content from CMS data
 // Load content from CMS data
 function loadContent(season) {
-    // Build menu items for all seasons
     const menuGrid = document.getElementById('menuGrid');
-<<<<<<< HEAD
     if (!menuGrid) return;
+
     const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
+    // Build grouped menu by season
     menuGrid.innerHTML = allSeasons.map(s => {
-        const data = cmsData.seasons[s];
+        const data = (cmsData.seasons && cmsData.seasons[s]) || null;
         if (!data || !data.menu || !data.menu.length) return '';
         return `
             <div class="menu-season-group">
@@ -48,7 +48,7 @@ function loadContent(season) {
                 <div class="menu-season-items">
                     ${data.menu.map(item => `
                         <div class="menu-item${item.image ? ' has-image' : ''}">
-                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/ac2xx7.jpg';"></div>` : ''}
+                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/chef.jpg';"></div>` : ''}
                             <div class="menu-item-body">
                                 <div class="menu-item-header">
                                     <h3>${item.name}</h3>
@@ -63,34 +63,13 @@ function loadContent(season) {
             </div>`;
     }).join('');
 
-    // Load chef info
+    // Update chef and philosophy
     const chefNameEl = document.getElementById('chefName');
     const chefBioEl = document.getElementById('chefBio');
-    if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
-    if (chefBioEl) chefBioEl.innerHTML = (cmsData.chef.bio || []).map(p => `<p>${p}</p>`).join('');
-=======
-    if (seasonData.menu.length > 0) {
-        menuGrid.innerHTML = seasonData.menu.map(item => `
-            <div class="menu-item">
-                <h3>${item.name}</h3>
-                <div class="ingredients">${item.ingredients}</div>
-                <p>${item.description}</p>
-            </div>
-        `).join('');
-    }
-    
-    // Load chef info only if different from default
-    if (cmsData.chef.name !== "Chef's Story") {
-        document.getElementById('chefName').textContent = cmsData.chef.name;
-    }
-    if (cmsData.chef.bio.length > 0) {
-        document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
-    }
-    
->>>>>>> 10a97bb (.)
-    // Load philosophy text
+    if (chefNameEl && cmsData.chef && cmsData.chef.name) chefNameEl.textContent = cmsData.chef.name;
+    if (chefBioEl && cmsData.chef && Array.isArray(cmsData.chef.bio)) chefBioEl.innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
     const philEl = document.getElementById('philosophyPreview');
-    if (philEl) philEl.textContent = cmsData.philosophy || '';
+    if (philEl && cmsData.philosophy) philEl.textContent = cmsData.philosophy;
 }
 
 // Handle reservation form submission
