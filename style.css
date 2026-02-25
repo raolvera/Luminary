@@ -2,6 +2,12 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
+
+   Do NOT edit this its a CSS reset, 
+   not the main stylesheet it will not
+   affect the design of the site, 
+   it just resets all the default browser 
+   styles to ensure consistency across different browsers.
 */
 
 html, body, div, span, applet, object, iframe,
@@ -47,6 +53,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/* end of CSS reset */
+
 /* Base colors - will change with seasons */
 :root {
     --primary: #2c5f4f;

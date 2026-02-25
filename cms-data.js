@@ -280,7 +280,9 @@ async function loadCMSData() {
         if (chef) {
             cmsData.chef.name = chef.name || cmsData.chef.name;
             cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n') : [];
-            if (chef.image) document.getElementById('chefImage').style.backgroundImage = `url(${chef.image})`;
+            if (chef.image && chef.image.trim()) {
+                document.getElementById('chefImage').style.backgroundImage = `url(${chef.image})`;
+            }
         }
 
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
