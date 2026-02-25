@@ -66,6 +66,10 @@ async function loadCMSData() {
     return cmsData;
 }
 
+// Kick off loading and expose ready promise
+window.cmsDataReady = loadCMSData();
+window.cmsDataReady.then(() => console.log('CMS Data loaded:', cmsData)).catch(() => {});
+
 function getCurrentSeason() {
     const month = new Date().getMonth();
     if (month >= 2 && month <= 4) return 'spring';

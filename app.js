@@ -1,15 +1,18 @@
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log('DOM loaded, initializing...');
     if (window.cmsDataReady) {
         await window.cmsDataReady;
     }
     const currentSeason = getCurrentSeason();
+    console.log('Current season:', currentSeason);
     applySeason(currentSeason);
     loadContent(currentSeason);
     initReservationSystem();
     initSmoothScroll();
     initHamburgerMenu();
     setMinDate();
+    console.log('Initialization complete');
 });
 
 // Apply the seasonal theme colors and text

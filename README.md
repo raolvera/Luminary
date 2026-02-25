@@ -128,4 +128,3 @@ Contributions welcome — fork the project and open a PR.
 ---
 
 Built with ❤️ using JAMstack and Netlify.
->>>>>>> 666038c (Ready to commit changes.)
