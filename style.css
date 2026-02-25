@@ -285,13 +285,6 @@ body {
 }
 
 .chef-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.chef-photo {
     width: 100%;
     aspect-ratio: 4 / 5;
     border-radius: 8px;
@@ -301,8 +294,21 @@ body {
 
 .chef-photo img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+    width: 100%;
     height: 500px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
+<<<<<<< HEAD
+=======
+    background-size: cover;
+    background-position: center;
+>>>>>>> c0a6c87 (.)
     border-radius: 8px;
 }
 
@@ -373,12 +379,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
->>>>>>> 0fcbfe3 (Add files via upload)
+}
 }
 
 .menu-item {
@@ -408,49 +409,46 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-}
+    .menu-item.has-image {
+        padding: 0;
+        overflow: hidden;
+    }
 
-.menu-item:hover .menu-item-image img {
-    transform: scale(1.05);
-}
+    .menu-item.has-image .menu-item-body {
+        padding: 24px 30px 30px;
+    }
 
-.menu-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-}
+    .menu-item-image {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
 
-.menu-item-price {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--accent);
-    white-space: nowrap;
-}
+    .menu-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
 
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
+    .menu-item:hover .menu-item-image img {
+        transform: scale(1.05);
+    }
 
-.menu-item h3 {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: var(--primary);
-}
+    .menu-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+    }
 
-.menu-item .ingredients {
-    font-size: 14px;
-    color: var(--accent);
-    margin-bottom: 15px;
-    font-style: italic;
-}
-
-.menu-item p {
-    font-size: 16px;
+    .menu-item-price {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--accent);
+        white-space: nowrap;
+    }
     line-height: 1.6;
     color: #666;
 }
