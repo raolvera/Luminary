@@ -135,13 +135,8 @@ function formatDate(dateString) {
 // Format time nicely
 function formatTime(timeString) {
     const [hours, minutes] = timeString.split(':');
-<<<<<<< HEAD
     const hour = parseInt(hours, 10);
     const ampm = hour >= 12 ? 'PM' : 'AM';
-=======
-    const hour = parseInt(hours);
-    const ampm = hour >= 12 ? 'PM' : 'AM'; // ignore ampm
->>>>>>> 666038c (Ready to commit changes.)
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${displayHour}:${minutes} ${ampm}`;
 }
@@ -150,20 +145,12 @@ function formatTime(timeString) {
 function initHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-<<<<<<< HEAD
+    if (!hamburger || !navMenu) return;
 
-=======
-    
->>>>>>> 0fcbfe3 (Add files via upload)
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 0fcbfe3 (Add files via upload)
     // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {

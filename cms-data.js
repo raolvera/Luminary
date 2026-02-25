@@ -286,7 +286,11 @@ async function loadCMSData() {
         }
 
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
-    } catch (e) {}
+        
+        return true;
+    } catch (e) {
+        return false;
+    }
 }
 
 function getCurrentSeason() {
@@ -297,5 +301,8 @@ function getCurrentSeason() {
     return 'winter';
 }
 
+<<<<<<< HEAD
 loadCMSData();
 >>>>>>> 64f5ea2 (update cms)
+=======
+>>>>>>> 430f4e0 (.)
