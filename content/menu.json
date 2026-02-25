@@ -23,6 +23,12 @@
       "description": "Velvety soup of roasted celery root, elevated with black truffle essence",
       "season": "winter",
       "category": "Celery root, truffle, chives"
+    },
+    {
+      "name": "Lobster",
+      "description": "Clery",
+      "season": "summer",
+      "category": "roots"
     }
   ]
 }
