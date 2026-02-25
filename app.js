@@ -36,6 +36,7 @@ function applySeason(season) {
 function loadContent(season) {
     // Build menu items for all seasons
     const menuGrid = document.getElementById('menuGrid');
+<<<<<<< HEAD
     if (!menuGrid) return;
     const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
     menuGrid.innerHTML = allSeasons.map(s => {
@@ -67,6 +68,26 @@ function loadContent(season) {
     const chefBioEl = document.getElementById('chefBio');
     if (chefNameEl) chefNameEl.textContent = cmsData.chef.name || '';
     if (chefBioEl) chefBioEl.innerHTML = (cmsData.chef.bio || []).map(p => `<p>${p}</p>`).join('');
+=======
+    if (seasonData.menu.length > 0) {
+        menuGrid.innerHTML = seasonData.menu.map(item => `
+            <div class="menu-item">
+                <h3>${item.name}</h3>
+                <div class="ingredients">${item.ingredients}</div>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+    }
+    
+    // Load chef info only if different from default
+    if (cmsData.chef.name !== "Chef's Story") {
+        document.getElementById('chefName').textContent = cmsData.chef.name;
+    }
+    if (cmsData.chef.bio.length > 0) {
+        document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
+    }
+    
+>>>>>>> 10a97bb (.)
     // Load philosophy text
     const philEl = document.getElementById('philosophyPreview');
     if (philEl) philEl.textContent = cmsData.philosophy || '';
