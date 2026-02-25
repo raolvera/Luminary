@@ -68,7 +68,6 @@ async function loadCMSData() {
 
 // Kick off loading and expose ready promise
 window.cmsDataReady = loadCMSData();
-window.cmsDataReady.then(() => console.log('CMS Data loaded:', cmsData)).catch(() => {});
 
 function getCurrentSeason() {
     const month = new Date().getMonth();
@@ -78,4 +77,4 @@ function getCurrentSeason() {
     return 'winter';
 }
 
-window.cmsDataReady = loadCMSData();
+window.cmsDataReady.then(() => console.log('CMS Data loaded:', cmsData)).catch(() => {});
