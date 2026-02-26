@@ -1,5 +1,6 @@
 // Initialize everything when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await cmsDataReady;
     const currentSeason = getCurrentSeason();
     applySeason(currentSeason);
     loadContent(currentSeason);
@@ -19,7 +20,7 @@ function applySeason(season) {
     document.getElementById('seasonalTagline').textContent = seasonData.tagline;
     
     // Update menu season indicator
-    document.getElementById('menuSeasonIndicator').textContent = `${seasonData.name} 2024`;
+    document.getElementById('menuSeasonIndicator').textContent = `${seasonData.name} ${new Date().getFullYear()}`;
 }
 
 // Load content from CMS data
