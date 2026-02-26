@@ -36,7 +36,6 @@ async function loadCMSData() {
 
         if (chef) {
             cmsData.chef.name = chef.name || cmsData.chef.name;
-<<<<<<< HEAD
             cmsData.chef.bio = Array.isArray(chef.bio) ? chef.bio : (chef.bio ? chef.bio.split('\n\n').map(p => p.trim()).filter(Boolean) : []);
             if (chef.image) {
                 const chefImgEl = document.getElementById('chefImage');
@@ -48,13 +47,6 @@ async function loadCMSData() {
                     img.onerror = () => { img.onerror = null; img.src = '/img/chef.jpg'; };
                     if (!chefImgEl.contains(img)) chefImgEl.appendChild(img);
                 }
-=======
-            cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n') : [];
-            if (chef.image && chef.image.trim()) {
-                const chefImg = document.getElementById('chefImage');
-                chefImg.style.background = `url(${chef.image}) center/contain no-repeat`;
-                chefImg.style.backgroundColor = 'var(--light)';
->>>>>>> 60777ad (.)
             }
         }
 
