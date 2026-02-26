@@ -80,7 +80,7 @@ Submissions are collected by Netlify Forms and visible in the Netlify dashboard.
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin YOUR_GITHUB_REPO_URL
+   git remote add origin https://github.com/raolvera/Luminary.git
    git push -u origin main
    ```
 
