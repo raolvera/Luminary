@@ -1,47 +1,33 @@
-<<<<<<< HEAD
-// Initialize everything when page loads
+// Initialize app when DOM is ready, awaiting CMS data if available
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('DOM loaded, initializing...');
-    if (window.cmsDataReady) {
-        await window.cmsDataReady;
-    }
+    if (window.cmsDataReady) await window.cmsDataReady;
     const currentSeason = getCurrentSeason();
-    console.log('Current season:', currentSeason);
     applySeason(currentSeason);
     loadContent(currentSeason);
     initReservationSystem();
     initSmoothScroll();
     initHamburgerMenu();
     setMinDate();
-    console.log('Initialization complete');
 });
 
-// Apply the seasonal theme colors and text
 function applySeason(season) {
     document.body.className = season;
-    const seasonData = cmsData.seasons[season];
-
-    // Update hero section
+    const seasonData = (window.cmsData && cmsData.seasons && cmsData.seasons[season]) || {};
     const currentSeasonEl = document.getElementById('currentSeason');
-    if (currentSeasonEl) currentSeasonEl.textContent = `${seasonData.name} Menu`;
+    if (currentSeasonEl && seasonData.name) currentSeasonEl.textContent = `${seasonData.name} Menu`;
     const taglineEl = document.getElementById('seasonalTagline');
-    if (taglineEl) taglineEl.textContent = seasonData.tagline;
-
-    // Update menu season indicator
+    if (taglineEl && seasonData.tagline) taglineEl.textContent = seasonData.tagline;
     const menuInd = document.getElementById('menuSeasonIndicator');
     if (menuInd) menuInd.textContent = 'Full Seasonal Menu';
 }
 
-// Load content from CMS data
-// Load content from CMS data
 function loadContent(season) {
     const menuGrid = document.getElementById('menuGrid');
-    if (!menuGrid) return;
+    if (!menuGrid || !window.cmsData) return;
 
     const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
-    // Build grouped menu by season
     menuGrid.innerHTML = allSeasons.map(s => {
-        const data = (cmsData.seasons && cmsData.seasons[s]) || null;
+        const data = cmsData.seasons && cmsData.seasons[s];
         if (!data || !data.menu || !data.menu.length) return '';
         return `
             <div class="menu-season-group">
@@ -64,7 +50,6 @@ function loadContent(season) {
             </div>`;
     }).join('');
 
-    // Update chef and philosophy
     const chefNameEl = document.getElementById('chefName');
     const chefBioEl = document.getElementById('chefBio');
     if (chefNameEl && cmsData.chef && cmsData.chef.name) chefNameEl.textContent = cmsData.chef.name;
@@ -73,23 +58,15 @@ function loadContent(season) {
     if (philEl && cmsData.philosophy) philEl.textContent = cmsData.philosophy;
 }
 
-// Handle reservation form submission
-// Handle reservation form submission
 function initReservationSystem() {
     const form = document.getElementById('reservationForm');
     const confirmation = document.getElementById('confirmationMessage');
-    if (!form) return; // nothing to do on pages without the form
+    if (!form) return;
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!confirmation) return;
-
         const formData = new FormData(form);
-        const name = formData.get('name') || '';
-        const email = formData.get('email') || '';
-        const date = formData.get('date') || '';
-        const time = formData.get('time') || '';
-        const guests = formData.get('guests') || '';
 
         try {
             const response = await fetch('/', {
@@ -99,6 +76,11 @@ function initReservationSystem() {
             });
 
             if (response.ok) {
+                const name = formData.get('name') || '';
+                const email = formData.get('email') || '';
+                const date = formData.get('date') || '';
+                const time = formData.get('time') || '';
+                const guests = formData.get('guests') || '';
                 confirmation.innerHTML = `\n                    <h3>Reservation Confirmed!</h3>\n                    <p>Thank you, ${name}. We've reserved a table for ${guests} guests on ${formatDate(date)} at ${formatTime(time)}.</p>\n                    <p>A confirmation email has been sent to ${email}.</p>\n                `;
                 confirmation.classList.add('show');
                 form.reset();
@@ -116,61 +98,13 @@ function initReservationSystem() {
     });
 }
 
-// Don't let people book in the past
 function setMinDate() {
     const dateInput = document.getElementById('date');
     if (!dateInput) return;
-=======
-document.addEventListener('DOMContentLoaded', async () => {
-    await cmsDataReady;
-    const currentSeason = getCurrentSeason();
-    applySeason(currentSeason);
-    loadContent(currentSeason);
-    initSmoothScroll();
-    setMinDate();
-});
-
-function applySeason(season) {
-    document.body.className = season;
-    const seasonData = cmsData.seasons[season];
-    document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
-    document.getElementById('seasonalTagline').textContent = seasonData.tagline;
-    document.getElementById('menuSeasonIndicator').textContent = `${seasonData.name} ${new Date().getFullYear()}`;
-}
-
-function loadContent(season) {
-    const seasonData = cmsData.seasons[season];
-    
-    const menuGrid = document.getElementById('menuGrid');
-    if (seasonData.menu.length > 0) {
-        menuGrid.innerHTML = seasonData.menu.map(item => `
-            <div class="menu-item">
-                <h3>${item.name}</h3>
-                <div class="ingredients">${item.ingredients}</div>
-                <p>${item.description}</p>
-            </div>
-        `).join('');
-    }
-    
-    if (cmsData.chef.name && cmsData.chef.name !== "Chef's Story") {
-        document.getElementById('chefName').textContent = cmsData.chef.name;
-    }
-    if (cmsData.chef.bio.length > 0) {
-        document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
-    }
-    
-    document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
-}
-
-function setMinDate() {
-    const dateInput = document.getElementById('date');
->>>>>>> 5865a65 (.)
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
 }
 
-<<<<<<< HEAD
-// Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -181,16 +115,15 @@ function formatDate(dateString) {
     });
 }
 
-// Format time nicely
 function formatTime(timeString) {
+    if (!timeString) return '';
     const [hours, minutes] = timeString.split(':');
     const hour = parseInt(hours, 10);
     const ampm = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour > 12 ? hour - 12 : hour;
+    const displayHour = hour > 12 ? hour - 12 : (hour === 0 ? 12 : hour);
     return `${displayHour}:${minutes} ${ampm}`;
 }
 
-// Mobile menu toggle
 function initHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
@@ -200,7 +133,6 @@ function initHamburgerMenu() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-    // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -209,36 +141,26 @@ function initHamburgerMenu() {
     });
 }
 
-// Smooth scrolling for anchor links
-=======
->>>>>>> 5865a65 (.)
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 }
-<<<<<<< HEAD
 
-// Helper function to see all reservations (for testing)
 function exportReservations() {
     const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
     console.log('Current Reservations:', reservations);
     return reservations;
 }
 
-// Track page load performance
 window.addEventListener('load', () => {
-    if (window.performance) {
+    if (window.performance && window.performance.timing) {
         const perfData = window.performance.timing;
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
         console.log(`Page Load Time: ${pageLoadTime}ms`);
     }
 });
-=======
->>>>>>> 5865a65 (.)

@@ -295,8 +295,11 @@ body {
 }
 
 .chef-photo img {
+    width: 100%;
+    height: auto;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .chef-content h2 {
