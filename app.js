@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOM loaded, initializing...');
@@ -119,10 +120,56 @@ function initReservationSystem() {
 function setMinDate() {
     const dateInput = document.getElementById('date');
     if (!dateInput) return;
+=======
+document.addEventListener('DOMContentLoaded', async () => {
+    await cmsDataReady;
+    const currentSeason = getCurrentSeason();
+    applySeason(currentSeason);
+    loadContent(currentSeason);
+    initSmoothScroll();
+    setMinDate();
+});
+
+function applySeason(season) {
+    document.body.className = season;
+    const seasonData = cmsData.seasons[season];
+    document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
+    document.getElementById('seasonalTagline').textContent = seasonData.tagline;
+    document.getElementById('menuSeasonIndicator').textContent = `${seasonData.name} ${new Date().getFullYear()}`;
+}
+
+function loadContent(season) {
+    const seasonData = cmsData.seasons[season];
+    
+    const menuGrid = document.getElementById('menuGrid');
+    if (seasonData.menu.length > 0) {
+        menuGrid.innerHTML = seasonData.menu.map(item => `
+            <div class="menu-item">
+                <h3>${item.name}</h3>
+                <div class="ingredients">${item.ingredients}</div>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+    }
+    
+    if (cmsData.chef.name && cmsData.chef.name !== "Chef's Story") {
+        document.getElementById('chefName').textContent = cmsData.chef.name;
+    }
+    if (cmsData.chef.bio.length > 0) {
+        document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
+    }
+    
+    document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
+}
+
+function setMinDate() {
+    const dateInput = document.getElementById('date');
+>>>>>>> 5865a65 (.)
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
 }
 
+<<<<<<< HEAD
 // Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -163,6 +210,8 @@ function initHamburgerMenu() {
 }
 
 // Smooth scrolling for anchor links
+=======
+>>>>>>> 5865a65 (.)
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -174,6 +223,7 @@ function initSmoothScroll() {
         });
     });
 }
+<<<<<<< HEAD
 
 // Helper function to see all reservations (for testing)
 function exportReservations() {
@@ -190,3 +240,5 @@ window.addEventListener('load', () => {
         console.log(`Page Load Time: ${pageLoadTime}ms`);
     }
 });
+=======
+>>>>>>> 5865a65 (.)

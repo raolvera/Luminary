@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const cmsData = {
     seasons: {
         spring: { name: 'Spring', tagline: 'Celebrating renewal', colors: { primary: '#6b9080', accent: '#f4a259' }, menu: [] },
@@ -16,10 +17,30 @@ async function loadCMSData() {
             fetch('/content/chef.json').then(r => r.json()).catch(() => null),
             fetch('/content/philosophy.json').then(r => r.json()).catch(() => null),
             fetch('/content/hero.json').then(r => r.json()).catch(() => null)
+=======
+let cmsData = {
+    seasons: {
+        spring: { name: "Spring", tagline: "Celebrating renewal", colors: { primary: "#6b9080", accent: "#f4a259" }, menu: [] },
+        summer: { name: "Summer", tagline: "Abundance at its peak", colors: { primary: "#e07a5f", accent: "#f2cc8f" }, menu: [] },
+        autumn: { name: "Autumn", tagline: "Harvest richness", colors: { primary: "#8b4513", accent: "#d4a574" }, menu: [] },
+        winter: { name: "Winter", tagline: "Comfort and contemplation", colors: { primary: "#2c5f4f", accent: "#a8dadc" }, menu: [] }
+    },
+    chef: { name: "Chef's Story", bio: [] },
+    philosophy: "At Luminary, we believe food should reflect the rhythm of nature."
+};
+
+const cmsDataReady = (async function loadCMSData() {
+    try {
+        const [menu, chef, philosophy] = await Promise.all([
+            fetch('/content/menu.json').then(r => r.json()).catch(() => null),
+            fetch('/content/chef.json').then(r => r.json()).catch(() => null),
+            fetch('/content/philosophy.json').then(r => r.json()).catch(() => null)
+>>>>>>> 5865a65 (.)
         ]);
 
         if (menu?.items) {
             menu.items.forEach(item => {
+<<<<<<< HEAD
                 if (cmsData.seasons[item.season]) {
                     cmsData.seasons[item.season].menu.push({
                         name: item.name,
@@ -27,6 +48,14 @@ async function loadCMSData() {
                         description: item.description || '',
                         image: item.image || '',
                         price: item.price || ''
+=======
+                const season = item.season === 'fall' ? 'autumn' : item.season;
+                if (cmsData.seasons[season]) {
+                    cmsData.seasons[season].menu.push({
+                        name: item.name,
+                        ingredients: item.category,
+                        description: item.description
+>>>>>>> 5865a65 (.)
                     });
                 }
             });
@@ -34,6 +63,7 @@ async function loadCMSData() {
 
         if (chef) {
             cmsData.chef.name = chef.name || cmsData.chef.name;
+<<<<<<< HEAD
             cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n').map(p => p.trim()).filter(p => p) : [];
             if (chef.image) {
                 const chefImg = document.getElementById('chefImage');
@@ -45,10 +75,16 @@ async function loadCMSData() {
                     img.onerror = () => { img.onerror = null; img.src = '/img/chef.jpg'; };
                     if (!img.parentElement) chefImg.appendChild(img);
                 }
+=======
+            cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n') : [];
+            if (chef.image && chef.image.trim()) {
+                document.getElementById('chefImage').style.backgroundImage = `url(${chef.image})`;
+>>>>>>> 5865a65 (.)
             }
         }
 
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
+<<<<<<< HEAD
 
         if (hero?.image) {
             const heroImg = document.getElementById('heroBgImage');
@@ -68,6 +104,10 @@ async function loadCMSData() {
 
 // Kick off loading and expose ready promise
 window.cmsDataReady = loadCMSData();
+=======
+    } catch (e) {}
+})();
+>>>>>>> 5865a65 (.)
 
 function getCurrentSeason() {
     const month = new Date().getMonth();
@@ -76,5 +116,8 @@ function getCurrentSeason() {
     if (month >= 8 && month <= 10) return 'autumn';
     return 'winter';
 }
+<<<<<<< HEAD
 
 window.cmsDataReady.then(() => console.log('CMS Data loaded:', cmsData)).catch(() => {});
+=======
+>>>>>>> 5865a65 (.)
