@@ -13,33 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
 function applySeason(season) {
     document.body.className = season;
     const seasonData = cmsData.seasons[season];
-    
+
     // Update hero section
     document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
     document.getElementById('seasonalTagline').textContent = seasonData.tagline;
-    
+
     // Update menu season indicator
-    document.getElementById('menuSeasonIndicator').textContent = `${seasonData.name} 2024`;
+    document.getElementById('menuSeasonIndicator').textContent = 'Full Seasonal Menu';
 }
 
 // Load content from CMS data
 function loadContent(season) {
-    const seasonData = cmsData.seasons[season];
-    
-    // Build menu items
+    // Build menu items for all seasons
     const menuGrid = document.getElementById('menuGrid');
-    menuGrid.innerHTML = seasonData.menu.map(item => `
-        <div class="menu-item">
-            <h3>${item.name}</h3>
-            <div class="ingredients">${item.ingredients}</div>
-            <p>${item.description}</p>
-        </div>
-    `).join('');
-    
+    const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
+    menuGrid.innerHTML = allSeasons.map(s => {
+        const data = cmsData.seasons[s];
+        if (!data.menu.length) return '';
+        return `
+            <div class="menu-season-group">
+                <h3 class="menu-season-title">${data.name}</h3>
+                <div class="menu-season-items">
+                    ${data.menu.map(item => `
+                        <div class="menu-item">
+                            <h3>${item.name}</h3>
+                            <div class="ingredients">${item.ingredients}</div>
+                            <p>${item.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>`;
+    }).join('');
+
     // Load chef info
     document.getElementById('chefName').textContent = cmsData.chef.name;
     document.getElementById('chefBio').innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
-    
+
     // Load philosophy text
     document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
 }
@@ -60,11 +69,11 @@ function setMinDate() {
 // Format date nicely for confirmation
 function formatDate(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
 }
 
@@ -81,12 +90,12 @@ function formatTime(timeString) {
 function initHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-    
+
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-    
+
     // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {

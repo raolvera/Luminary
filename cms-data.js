@@ -31,11 +31,23 @@ async function loadCMSData() {
 
         if (chef) {
             cmsData.chef.name = chef.name || cmsData.chef.name;
-            cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n') : [];
-            if (chef.image) document.getElementById('chefImage').style.backgroundImage = `url(${chef.image})`;
+            cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n').map(p => p.trim()).filter(p => p) : [];
+            if (chef.image) {
+                const chefImg = document.getElementById('chefImage');
+                const img = document.createElement('img');
+                img.src = chef.image;
+                img.alt = chef.name || 'Chef';
+                chefImg.innerHTML = '';
+                chefImg.appendChild(img);
+            }
         }
 
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
+
+        // Re-render content now that CMS data is loaded
+        if (typeof loadContent === 'function') {
+            loadContent(getCurrentSeason());
+        }
     } catch (e) {}
 }
 
