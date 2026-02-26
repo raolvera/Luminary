@@ -1,7 +1,8 @@
 // Initialize everything when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const currentSeason = getCurrentSeason();
     applySeason(currentSeason);
+    await cmsDataReady;
     loadContent(currentSeason);
     initReservationSystem();
     initSmoothScroll();

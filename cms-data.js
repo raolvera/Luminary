@@ -47,4 +47,4 @@ function getCurrentSeason() {
     return 'winter';
 }
 
-loadCMSData();
+const cmsDataReady = loadCMSData();
