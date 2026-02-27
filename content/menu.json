@@ -28,7 +28,9 @@
       "name": "Ceviche",
       "description": "Freshly cured sea bass in a vibrant citrus leche de tigre, garnished with pickled red onions, crisp cucumber, and fresh cilantro.",
       "season": "summer",
-      "category": "Sea bass, lime, red onion, cucumber, cilantro, chili."
+      "category": "Sea bass, lime, red onion, cucumber, cilantro, chili.",
+      "image": "/img/starlighttart.jpg",
+      "price": "$20.00"
     }
   ]
 }
