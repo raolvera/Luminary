@@ -4,25 +4,33 @@
       "name": "Spring Pea Velouté",
       "description": "Silky soup celebrating the first harvest of spring peas, finished with garden mint",
       "season": "spring",
-      "category": "English peas, mint, crème fraîche"
+      "category": "English peas, mint, crème fraîche",
+      "image": "/img/pexels-change-c-c-974768353-24246198.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Heirloom Tomato",
       "description": "Peak-season tomatoes in vibrant colors, paired with creamy burrata and aromatic basil",
       "season": "summer",
-      "category": "Heirloom tomatoes, burrata, basil oil"
+      "category": "Heirloom tomatoes, burrata, basil oil",
+      "image": "/img/pexels-geraud-pfeiffer-6608617.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Roasted Squash",
       "description": "Caramelized squash with crispy sage and toasted hazelnuts from local orchards",
-      "season": "autumn",
-      "category": "Kabocha squash, sage, hazelnuts"
+      "season": "summer",
+      "category": "Kabocha squash, sage, hazelnuts",
+      "price": "$20.00",
+      "image": "/img/pexels-polina-tankilevitch-4110320.jpg"
     },
     {
       "name": "Celery Root Soup",
       "description": "Velvety soup of roasted celery root, elevated with black truffle essence",
       "season": "winter",
-      "category": "Celery root, truffle, chives"
+      "category": "Celery root, truffle, chives",
+      "image": "/img/pexels-delphine-hourlay-91322-691159.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Ceviche",
