@@ -41,4 +41,6 @@ collections:
               - {label: "Description", name: "description", widget: "text"}
               - {label: "Season", name: "season", widget: "select", options: ["spring", "summer", "fall", "winter"]}
               - {label: "Category", name: "category", widget: "string"}
+              - {label: "Dish Image", name: "image", widget: "image", required: false, hint: "Upload a photo of the dish (recommended: 600x400)"}
+              - {label: "Price", name: "price", widget: "string", required: false, hint: "e.g. $28"}
 

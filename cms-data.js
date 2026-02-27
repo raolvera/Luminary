@@ -24,7 +24,9 @@ async function loadCMSData() {
                     cmsData.seasons[item.season].menu.push({
                         name: item.name,
                         ingredients: item.category,
-                        description: item.description
+                        description: item.description,
+                        image: item.image || '',
+                        price: item.price || ''
                     });
                 }
             });
@@ -46,9 +48,11 @@ async function loadCMSData() {
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
 
         if (hero?.image) {
-            const heroSection = document.querySelector('.hero');
-            heroSection.style.backgroundImage = `url('${hero.image}')`;
-            heroSection.classList.add('has-hero-image');
+            const heroImg = document.getElementById('heroBgImage');
+            heroImg.src = hero.image;
+            heroImg.alt = 'Luminary restaurant';
+            heroImg.style.display = 'block';
+            document.querySelector('.hero').classList.add('has-hero-image');
         }
 
         // Re-render content now that CMS data is loaded
