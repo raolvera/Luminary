@@ -11,10 +11,11 @@ let cmsData = {
 
 async function loadCMSData() {
     try {
-        const [menu, chef, philosophy] = await Promise.all([
+        const [menu, chef, philosophy, hero] = await Promise.all([
             fetch('/content/menu.json').then(r => r.json()).catch(() => null),
             fetch('/content/chef.json').then(r => r.json()).catch(() => null),
-            fetch('/content/philosophy.json').then(r => r.json()).catch(() => null)
+            fetch('/content/philosophy.json').then(r => r.json()).catch(() => null),
+            fetch('/content/hero.json').then(r => r.json()).catch(() => null)
         ]);
 
         if (menu?.items) {
@@ -43,6 +44,12 @@ async function loadCMSData() {
         }
 
         if (philosophy?.text) cmsData.philosophy = philosophy.text;
+
+        if (hero?.image) {
+            const heroSection = document.querySelector('.hero');
+            heroSection.style.backgroundImage = `url('${hero.image}')`;
+            heroSection.classList.add('has-hero-image');
+        }
 
         // Re-render content now that CMS data is loaded
         if (typeof loadContent === 'function') {

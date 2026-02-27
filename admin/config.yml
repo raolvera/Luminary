@@ -9,6 +9,12 @@ collections:
   - name: "content"
     label: "Site Content"
     files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.json"
+        fields:
+          - {label: "Hero Image", name: "image", widget: "image", hint: "Upload a hero background image (recommended: 1920x1080 or larger)"}
+
       - name: "chef"
         label: "Chef Section"
         file: "content/chef.json"
