@@ -35,10 +35,16 @@ function loadContent(season) {
                 <h3 class="menu-season-title">${data.name}</h3>
                 <div class="menu-season-items">
                     ${data.menu.map(item => `
-                        <div class="menu-item">
-                            <h3>${item.name}</h3>
-                            <div class="ingredients">${item.ingredients}</div>
-                            <p>${item.description}</p>
+                        <div class="menu-item${item.image ? ' has-image' : ''}">
+                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>` : ''}
+                            <div class="menu-item-body">
+                                <div class="menu-item-header">
+                                    <h3>${item.name}</h3>
+                                    ${item.price ? `<span class="menu-item-price">${item.price}</span>` : ''}
+                                </div>
+                                <div class="ingredients">${item.ingredients}</div>
+                                <p>${item.description}</p>
+                            </div>
                         </div>
                     `).join('')}
                 </div>
