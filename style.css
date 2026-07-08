@@ -157,7 +157,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: #1f2a24;
     color: white;
     text-align: center;
     position: relative;
@@ -172,6 +172,7 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    z-index: 0;
 }
 
 .hero::before {
@@ -282,16 +283,19 @@ body {
     align-items: center;
 }
 
-.image-placeholder {
+.chef-photo {
     width: 100%;
+    aspect-ratio: 4 / 5;
     border-radius: 8px;
     overflow: hidden;
     line-height: 0;
 }
 
-.image-placeholder img {
+.chef-photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     display: block;
     border-radius: 8px;
 }

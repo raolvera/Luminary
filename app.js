@@ -1,5 +1,9 @@
 // Initialize everything when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    if (window.cmsDataReady) {
+        await window.cmsDataReady;
+    }
+
     const currentSeason = getCurrentSeason();
     applySeason(currentSeason);
     loadContent(currentSeason);
@@ -36,7 +40,7 @@ function loadContent(season) {
                 <div class="menu-season-items">
                     ${data.menu.map(item => `
                         <div class="menu-item${item.image ? ' has-image' : ''}">
-                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>` : ''}
+                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/ac2xx7.jpg';"></div>` : ''}
                             <div class="menu-item-body">
                                 <div class="menu-item-header">
                                     <h3>${item.name}</h3>
