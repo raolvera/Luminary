@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Centralized CMS data loader used by app.js */
 let cmsData = {
     seasons: {
@@ -27,23 +28,6 @@ let cmsData = {
         name: "Chef Elena Moreau", 
         bio: [
             "Every dish tells a story of the season. My approach is simple: let ingredients speak for themselves.",
-            "Trained across three continents, I've learned that the best cuisine honors time and place. At Luminary, we work directly with local farmers and foragers to bring you flavors that can only exist right now, in this moment."
-        ]
-    },
-    philosophy: "At Luminary, we believe food should reflect the rhythm of nature. Our menu transforms with each season, celebrating ingredients at their peak."
->>>>>>> b70ef51 (.)
-};
-
-async function loadCMSData() {
-    try {
-<<<<<<< HEAD
-        const [menu, chef, philosophy, hero] = await Promise.all([
-            fetch('/content/menu.json').then(r => r.json()).catch(() => null),
-            fetch('/content/chef.json').then(r => r.json()).catch(() => null),
-            fetch('/content/philosophy.json').then(r => r.json()).catch(() => null),
-            fetch('/content/hero.json').then(r => r.json()).catch(() => null)
-        ]);
-
         /* Centralized CMS data loader used by app.js */
         let cmsData = {
             seasons: {
@@ -128,4 +112,5 @@ async function loadCMSData() {
         }
 
         window.cmsDataReady.then(() => console.log('CMS Data loaded:', cmsData)).catch(() => {});
-})();
+window.cmsDataReady = loadCMSData();
+>>>>>>> 28c88d9 (Resolve merge conflict: agent-update-issues-7f1c vs main (cms-data.js))
