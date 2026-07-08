@@ -9,12 +9,36 @@
       "price": "$20.00"
     },
     {
+      "name": "Asparagus & Morel",
+      "description": "Grilled white asparagus paired with foraged morel mushrooms and a light lemon beurre blanc",
+      "season": "spring",
+      "category": "White asparagus, morels, lemon"
+    },
+    {
+      "name": "Spring Lamb",
+      "description": "Herb-crusted rack of lamb with artichoke purée and fresh fava beans",
+      "season": "spring",
+      "category": "Lamb, artichoke, fava beans"
+    },
+    {
       "name": "Heirloom Tomato",
       "description": "Peak-season tomatoes in vibrant colors, paired with creamy burrata and aromatic basil",
       "season": "summer",
       "category": "Heirloom tomatoes, burrata, basil oil",
       "image": "/img/pexels-geraud-pfeiffer-6608617.jpg",
       "price": "$20.00"
+    },
+    {
+      "name": "Grilled Branzino",
+      "description": "Whole Mediterranean sea bass with summer stone fruit salsa and charred scallions",
+      "season": "summer",
+      "category": "Branzino, peach, scallions"
+    },
+    {
+      "name": "Sweet Corn Agnolotti",
+      "description": "Handmade pasta filled with sweet corn custard, finished with brown butter and chanterelles",
+      "season": "summer",
+      "category": "Sweet corn, chanterelles, brown butter"
     },
     {
       "name": "Roasted Squash",
@@ -25,12 +49,36 @@
       "image": "/img/pexels-polina-tankilevitch-4110320.jpg"
     },
     {
+      "name": "Duck Confit",
+      "description": "Slow-braised duck leg with wild mushroom ragout and roasted root vegetables",
+      "season": "autumn",
+      "category": "Duck, wild mushrooms, root vegetables"
+    },
+    {
+      "name": "Pumpkin Risotto",
+      "description": "Creamy arborio rice with roasted pumpkin, amaretti crumble, and aged Parmigiano",
+      "season": "autumn",
+      "category": "Pumpkin, arborio rice, Parmigiano"
+    },
+    {
       "name": "Celery Root Soup",
       "description": "Velvety soup of roasted celery root, elevated with black truffle essence",
       "season": "winter",
       "category": "Celery root, truffle, chives",
       "image": "/img/pexels-delphine-hourlay-91322-691159.jpg",
       "price": "$20.00"
+    },
+    {
+      "name": "Braised Short Rib",
+      "description": "Red wine-braised beef short rib with creamy polenta and gremolata",
+      "season": "winter",
+      "category": "Beef short rib, polenta, gremolata"
+    },
+    {
+      "name": "Seared Scallops",
+      "description": "Pan-seared diver scallops with cauliflower purée, capers, and brown butter",
+      "season": "winter",
+      "category": "Scallops, cauliflower, brown butter"
     },
     {
       "name": "Ceviche",
