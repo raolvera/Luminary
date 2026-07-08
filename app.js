@@ -96,6 +96,7 @@ function initReservationSystem() {
 
         setTimeout(() => confirmation.classList.remove('show'), 10000);
     });
+<<<<<<< HEAD
     const seasonData = cmsData.seasons[season];
     document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
     document.getElementById('seasonalTagline').textContent = seasonData.tagline;
@@ -139,6 +140,8 @@ function loadContent() {
     
     document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
 >>>>>>> 38bbcab (.)
+=======
+>>>>>>> 25fb1339d09f7129437a2c1570d27cd9c9a6067e
 }
 
 function setMinDate() {
