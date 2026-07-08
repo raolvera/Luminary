@@ -37,11 +37,15 @@ async function loadCMSData() {
             cmsData.chef.bio = chef.bio ? chef.bio.split('\n\n').map(p => p.trim()).filter(p => p) : [];
             if (chef.image) {
                 const chefImg = document.getElementById('chefImage');
-                const img = document.createElement('img');
+                const img = chefImg.querySelector('img') || document.createElement('img');
                 img.src = chef.image;
                 img.alt = chef.name || 'Chef';
-                chefImg.innerHTML = '';
-                chefImg.appendChild(img);
+                img.loading = 'lazy';
+                img.onerror = () => {
+                    img.onerror = null;
+                    img.src = '/img/chef.jpg';
+                };
+                if (!img.parentElement) chefImg.appendChild(img);
             }
         }
 
@@ -51,14 +55,13 @@ async function loadCMSData() {
             const heroImg = document.getElementById('heroBgImage');
             heroImg.src = hero.image;
             heroImg.alt = 'Luminary restaurant';
-            heroImg.style.display = 'block';
+            heroImg.onerror = () => {
+                heroImg.onerror = null;
+                heroImg.src = '/img/hero.jpg';
+            };
             document.querySelector('.hero').classList.add('has-hero-image');
         }
 
-        // Re-render content now that CMS data is loaded
-        if (typeof loadContent === 'function') {
-            loadContent(getCurrentSeason());
-        }
     } catch (e) {}
 }
 
@@ -70,4 +73,4 @@ function getCurrentSeason() {
     return 'winter';
 }
 
-loadCMSData();
+window.cmsDataReady = loadCMSData();
