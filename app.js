@@ -96,7 +96,6 @@ function initReservationSystem() {
 
         setTimeout(() => confirmation.classList.remove('show'), 10000);
     });
-=======
     const seasonData = cmsData.seasons[season];
     document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
     document.getElementById('seasonalTagline').textContent = seasonData.tagline;
