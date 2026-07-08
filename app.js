@@ -96,6 +96,52 @@ function initReservationSystem() {
 
         setTimeout(() => confirmation.classList.remove('show'), 10000);
     });
+<<<<<<< HEAD
+    const seasonData = cmsData.seasons[season];
+    document.getElementById('currentSeason').textContent = `${seasonData.name} Menu`;
+    document.getElementById('seasonalTagline').textContent = seasonData.tagline;
+    document.getElementById('menuSeasonIndicator').textContent = 'Full Seasonal Menu';
+}
+
+function loadContent() {
+    // Display all seasons
+    const menuGrid = document.getElementById('menuGrid');
+    let allMenuHTML = '';
+    
+    ['spring', 'summer', 'autumn', 'winter'].forEach(season => {
+        const seasonData = cmsData.seasons[season];
+        if (seasonData.menu.length > 0) {
+            allMenuHTML += `
+                <div class="season-section">
+                    <h3 class="season-title">${seasonData.name}</h3>
+                    <div class="season-menu-grid">
+                        ${seasonData.menu.map(item => `
+                            <div class="menu-item">
+                                <h4>${item.name}</h4>
+                                <div class="ingredients">${item.ingredients}</div>
+                                <p>${item.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    });
+    
+    menuGrid.innerHTML = allMenuHTML;
+    
+    if (cmsData.chef.name && cmsData.chef.name !== "Chef's Story") {
+        document.getElementById('chefName').textContent = cmsData.chef.name;
+    }
+    if (cmsData.chef.bio.length > 0) {
+        const bioArray = cmsData.chef.bio.map(p => p.trim()).filter(p => p);
+        document.getElementById('chefBio').innerHTML = bioArray.map(p => `<p>${p}</p>`).join('');
+    }
+    
+    document.getElementById('philosophyPreview').textContent = cmsData.philosophy;
+>>>>>>> 38bbcab (.)
+=======
+>>>>>>> 25fb1339d09f7129437a2c1570d27cd9c9a6067e
 }
 
 function setMinDate() {
