@@ -4,7 +4,9 @@
       "name": "Spring Pea Velouté",
       "description": "Silky soup celebrating the first harvest of spring peas, finished with garden mint",
       "season": "spring",
-      "category": "English peas, mint, crème fraîche"
+      "category": "English peas, mint, crème fraîche",
+      "image": "/img/pexels-change-c-c-974768353-24246198.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Asparagus & Morel",
@@ -22,7 +24,9 @@
       "name": "Heirloom Tomato",
       "description": "Peak-season tomatoes in vibrant colors, paired with creamy burrata and aromatic basil",
       "season": "summer",
-      "category": "Heirloom tomatoes, burrata, basil oil"
+      "category": "Heirloom tomatoes, burrata, basil oil",
+      "image": "/img/pexels-geraud-pfeiffer-6608617.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Grilled Branzino",
@@ -40,7 +44,9 @@
       "name": "Roasted Squash",
       "description": "Caramelized squash with crispy sage and toasted hazelnuts from local orchards",
       "season": "autumn",
-      "category": "Kabocha squash, sage, hazelnuts"
+      "category": "Kabocha squash, sage, hazelnuts",
+      "price": "$20.00",
+      "image": "/img/pexels-polina-tankilevitch-4110320.jpg"
     },
     {
       "name": "Duck Confit",
@@ -58,7 +64,9 @@
       "name": "Celery Root Soup",
       "description": "Velvety soup of roasted celery root, elevated with black truffle essence",
       "season": "winter",
-      "category": "Celery root, truffle, chives"
+      "category": "Celery root, truffle, chives",
+      "image": "/img/pexels-delphine-hourlay-91322-691159.jpg",
+      "price": "$20.00"
     },
     {
       "name": "Braised Short Rib",
@@ -71,6 +79,14 @@
       "description": "Pan-seared diver scallops with cauliflower purée, capers, and brown butter",
       "season": "winter",
       "category": "Scallops, cauliflower, brown butter"
+    },
+    {
+      "name": "Ceviche",
+      "description": "Freshly cured sea bass in a vibrant citrus leche de tigre, garnished with pickled red onions, crisp cucumber, and fresh cilantro.",
+      "season": "summer",
+      "category": "Sea bass, lime, red onion, cucumber, cilantro, chili.",
+      "image": "/img/starlighttart.jpg",
+      "price": "$20.00"
     }
   ]
 }
