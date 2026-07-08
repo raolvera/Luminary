@@ -351,6 +351,9 @@ body {
 .menu-grid {
     max-width: 1000px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
 .menu-season-group {
@@ -375,6 +378,13 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+}
+
+.menu-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    font-size: 18px;
 }
 
 .menu-item {

@@ -18,37 +18,19 @@ function applySeason(season) {
     const taglineEl = document.getElementById('seasonalTagline');
     if (taglineEl && seasonData.tagline) taglineEl.textContent = seasonData.tagline;
     const menuInd = document.getElementById('menuSeasonIndicator');
-    if (menuInd) menuInd.textContent = 'Full Seasonal Menu';
+    if (menuInd && seasonData.name) menuInd.textContent = `${seasonData.name} Seasonal Menu`;
 }
 
 function loadContent(season) {
     const menuGrid = document.getElementById('menuGrid');
     if (!menuGrid || !window.cmsData) return;
 
-    const allSeasons = ['spring', 'summer', 'autumn', 'winter'];
-    menuGrid.innerHTML = allSeasons.map(s => {
-        const data = cmsData.seasons && cmsData.seasons[s];
-        if (!data || !data.menu || !data.menu.length) return '';
-        return `
-            <div class="menu-season-group">
-                <h3 class="menu-season-title">${data.name}</h3>
-                <div class="menu-season-items">
-                    ${data.menu.map(item => `
-                        <div class="menu-item${item.image ? ' has-image' : ''}">
-                            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/chef.jpg';"></div>` : ''}
-                            <div class="menu-item-body">
-                                <div class="menu-item-header">
-                                    <h3>${item.name}</h3>
-                                    ${item.price ? `<span class="menu-item-price">${item.price}</span>` : ''}
-                                </div>
-                                <div class="ingredients">${item.ingredients || ''}</div>
-                                <p>${item.description || ''}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>`;
-    }).join('');
+    const currentSeasonData = cmsData.seasons && cmsData.seasons[season];
+    const menuItems = currentSeasonData && Array.isArray(currentSeasonData.menu) ? currentSeasonData.menu : [];
+
+    menuGrid.innerHTML = menuItems.length
+        ? menuItems.map(renderMenuItem).join('')
+        : '<p class="menu-empty">The seasonal menu is being finalized. Please check back soon.</p>';
 
     const chefNameEl = document.getElementById('chefName');
     const chefBioEl = document.getElementById('chefBio');
@@ -56,6 +38,21 @@ function loadContent(season) {
     if (chefBioEl && cmsData.chef && Array.isArray(cmsData.chef.bio)) chefBioEl.innerHTML = cmsData.chef.bio.map(p => `<p>${p}</p>`).join('');
     const philEl = document.getElementById('philosophyPreview');
     if (philEl && cmsData.philosophy) philEl.textContent = cmsData.philosophy;
+}
+
+function renderMenuItem(item) {
+    return `
+        <div class="menu-item${item.image ? ' has-image' : ''}">
+            ${item.image ? `<div class="menu-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='/img/chef.jpg';"></div>` : ''}
+            <div class="menu-item-body">
+                <div class="menu-item-header">
+                    <h3>${item.name}</h3>
+                    ${item.price ? `<span class="menu-item-price">${item.price}</span>` : ''}
+                </div>
+                <div class="ingredients">${item.ingredients || ''}</div>
+                <p>${item.description || ''}</p>
+            </div>
+        </div>`;
 }
 
 function initReservationSystem() {
@@ -149,12 +146,6 @@ function initSmoothScroll() {
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
-}
-
-function exportReservations() {
-    const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
-    console.log('Current Reservations:', reservations);
-    return reservations;
 }
 
 window.addEventListener('load', () => {
